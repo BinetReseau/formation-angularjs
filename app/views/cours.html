@@ -1,0 +1,165 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="navbar-header">
+              <a class="navbar-brand">Formation AngularJS</a>
+            </div>
+
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li class="dropdown" dropdown>
+                    <a href class="dropdown-toggle" dropdown-toggle>
+                        1. Javascript
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/cours?scrollTo=js-intro">a. Présentation</a></li>
+                        <li><a href="#/cours?scrollTo=js-syntaxe">b. Syntaxe</a></li>
+                        <li><a href="#/cours?scrollTo=js-objets">c. Les objets</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown" dropdown>
+                    <a href class="dropdown-toggle" dropdown-toggle>
+                        2. Les bases d'AngularJS
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/cours?scrollTo=ng-intro">a. Présentation</a></li>
+                        <li><a href="#/cours?scrollTo=ng-controllerview">b. Controlleur/Vue</a></li>
+                        <li><a href="#/cours?scrollTo=ng-vues">c. Vues</a></li>
+                        <li><a href="#/cours?scrollTo=ng-forms">c. Formulaires</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown" dropdown>
+                    <a href class="dropdown-toggle" dropdown-toggle>
+                        3. Site web complet en AngularJS
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/cours?scrollTo=ngc-routing">a. Routing</a></li>
+                        <li><a href="#/cours?scrollTo=ngc-resource">b. $resource</a></li>
+                        <li><a href="#/cours?scrollTo=ngc-suite">c. Filters, directives</a></li>
+                    </ul>
+                </li>
+              </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="col-md-12">
+    <div class="panel panel-default" id="installation">
+        <div class="panel-heading">
+            <h3 class="panel-title">Installation</h3>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <li>Un bloc-note amélioré : <a href="http://www.sublimetext.com/3" target="_blank">Sublime Text</a> ;</li>
+                <li>Un navigateur ;</li>
+                <li><a href="http://git-scm.com/download" target="_blank">Git</a> ;</li>
+                <li><a href="http://nodejs.org/download/">NodeJS & NPM</a> ;</li>
+                <li><a href="site-vide.zip">Téléchargez les fichiers nécessaires au cours.</a></li>
+            </ul>
+        </div>
+    </div>
+    <h1>1. Javascript</h1>
+    <div class="panel panel-default" id="js-intro">
+        <div class="panel-heading">
+            <h3 class="panel-title">a. Présentation</h3>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <li>Langage de script, non typé, exécuté "en direct" <strong>par le navigateur</strong> ;</li>
+                <li>Rien à voir avec Java ;</li>
+                <li>Console javascript :
+                    <ul>
+                        <li>Chrome : <kbd>Ctrl + Shift + J</kbd> (Windows) / <kbd>cmd + alt + J</kbd> (Mac) ;</li>
+                        <li>Firefox : <kbd>Ctrl + Shift + K</kbd> (Windows) / <kbd>cmd + alt + K</kbd> (Mac).</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel panel-default" id="js-syntaxe">
+        <div class="panel-heading">
+            <h3 class="panel-title">b. Syntaxe</h3>
+        </div>
+        <div class="panel-body">
+            <h4>Base</h4>
+<div hljs no-escape>var age = 12; // Déclaration d'une variable
+var difference = 30 - 12;
+age++;
+if (age < 18) {
+    alert("Ce site n'est pas pour toi !");
+} else {
+    alert("Hello!");
+}</div>
+            <h4>Boucles</h4>
+<div hljs no-escape>for (var i = 0; i < 100; i++) {
+    console.log(i);
+}
+
+var j = 30;
+while (j > 26) {
+    j--;
+    alert("Haha !");
+}</div>
+            <h4>Fonctions</h4>
+<div hljs no-escape>function ditBonjour(name) {
+    alert("Bonjour " + name);
+}
+ditBonjour("tout le monde !");
+ditBonjour("toi");</div>
+            <h4>Listes/Tableaux</h4>
+<div hljs no-escape>var semaine = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"];
+console.log(semaine[2]);
+console.log("Nombre de jours : " + semaine.length);
+semaine.push("Samedi");
+semaine.push("Dimanche");
+console.log(semaine);</div>
+        </div>
+    </div>
+    <div class="panel panel-default" id="js-objets">
+        <div class="panel-heading">
+            <h3 class="panel-title">c. Objets</h3>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <li>Langage orienté objets ;</li>
+                <li>Pas de classe ;</li>
+                <li>Système clé => valeur ou fonction (méthode).</li>
+            </ul>
+<div hljs no-escape>var aliment = {
+    nom: "Pizza",
+    quantite: 23,
+    appro: function (qty) {
+        this.quantite = this.quantite + qty;
+    },
+    consommer: function () {
+        this.quantite--;
+    }
+};
+
+console.log(aliment.nom);
+console.log(aliment.quantite);
+aliment.consommer();
+console.log(aliment.quantite);</div>
+        </div>
+    </div>
+
+    <h1>2. Les bases d'AngularJS</h1>
+    <h1>3. Faire un site web complet avec AngularJS</h1>
+
+    <br /><br />
+    <div class="panel panel-default" id="summary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Pour résumer</h3>
+        </div>
+        <div class="panel-body">
+            HTML, CSS, Bootstrap, Google.<br /><br />
+            <ul>
+                <li><a href="http://openclassrooms.com/courses/apprenez-a-creer-votre-site-web-avec-html5-et-css3" target="_blank">Tuto HTML/CSS</a> ;</li>
+                <li><a href="http://openclassrooms.com/courses/prenez-en-main-bootstrap" target="_blank">Tuto Bootstrap</a> ;</li>
+                <li><a href="http://getbootstrap.com/" target="_blank">Le site de Bootstrap</a> ;</li>
+                <li><a href="http://google.com" target="_blank">Un moteur de recherche</a>.</li>
+            </ul>
+        </div>
+    </div>
+</div>
