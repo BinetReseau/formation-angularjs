@@ -35,7 +35,8 @@
                     <ul class="dropdown-menu">
                         <li><a href="#/cours?scrollTo=ngc-routing">a. Routing</a></li>
                         <li><a href="#/cours?scrollTo=ngc-resource">b. $resource</a></li>
-                        <li><a href="#/cours?scrollTo=ngc-suite">c. Filters, directives</a></li>
+                        <li><a href="#/cours?scrollTo=ngc-exo">c. Exercice</a></li>
+                        <li><a href="#/cours?scrollTo=ngc-suite">d. La suite</a></li>
                     </ul>
                 </li>
               </ul>
@@ -295,6 +296,10 @@ Ton nom : &lt;input type="text" ng-model="nom" /&gt;&lt;br /&gt;
                 <img src="images/ex2.gif" />
             </div>
 
+            <h4>Les filtres</h4>
+            <div hljs no-escape language="html">
+&lt;tr ng-repeat="membre in membres | filter: recherche"&gt;</div>
+
             <p class="lead text-center">
                 Le controlleur et la vue peuvent modifier le <strong>scope</strong>. C'est le two-way data-binding. Les modifications sont répercutées en temps réel par AngularJS.
             </p>
@@ -319,6 +324,32 @@ Ton nom : &lt;input type="text" ng-model="nom" /&gt;&lt;br /&gt;
     templateUrl: 'views/ma-vue.html',
     controller: 'MaPageCtrl'
 })</div>
+        </div>
+    </div>
+    <div class="panel panel-default" id="ngc-resource">
+        <div class="panel-heading">
+            <h3 class="panel-title">b. $resource : échanger des données</h3>
+        </div>
+        <div class="panel-body">
+            <div hljs no-escape>
+var User = $resource('https://api.spotify.com/v1/artists/:id', {id:'@id'});
+$scope.coldplay = User.get({id:"4gzpq5DPGxSnKTe4SA8HAU"}, function() {
+    console.log("Requête terminée");
+});
+console.log("Je suis là");</div>
+            <ul>
+                <li><strong>Asynchrone</strong> : le navigateur n'attend pas pour passer à la suite ;</li>
+                <li><strong>.get</strong> : un objet ; <strong>.query</strong> : un tableau ;</li>
+                <li>Format JSON ;</li>
+                <li>Documentation ici : <a href="https://docs.angularjs.org/api/ngResource/service/$resource" target="_blank">https://docs.angularjs.org/api/ngResource/service/$resource</a>.</li>
+            </ul>
+
+            <h4>Mise en pratique</h4>
+            <img src="images/ex3.png" style="width: 100%;" />
+
+            <ul>
+                <li>Liste des albums : <code>https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums</code>.</li>
+            </ul>
         </div>
     </div>
 
