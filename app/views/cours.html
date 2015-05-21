@@ -25,7 +25,7 @@
                         <li><a href="#/cours?scrollTo=ng-intro">a. Présentation</a></li>
                         <li><a href="#/cours?scrollTo=ng-controllerview">b. Controlleur/Vue</a></li>
                         <li><a href="#/cours?scrollTo=ng-vues">c. Vues</a></li>
-                        <li><a href="#/cours?scrollTo=ng-forms">c. Formulaires</a></li>
+                        <li><a href="#/cours?scrollTo=ng-forms">d. Formulaires</a></li>
                     </ul>
                 </li>
                 <li class="dropdown" dropdown>
@@ -52,9 +52,7 @@
         <div class="panel-body">
             <ul>
                 <li>Un bloc-note amélioré : <a href="http://www.sublimetext.com/3" target="_blank">Sublime Text</a> ;</li>
-                <li>Un navigateur ;</li>
-                <li><a href="http://git-scm.com/download" target="_blank">Git</a> ;</li>
-                <li><a href="http://nodejs.org/download/">NodeJS & NPM</a> ;</li>
+                <li><a href="https://www.mozilla.org/fr/firefox/new/" target="_blank">Firefox</a> ;</li>
                 <li><a href="site-vide.zip">Téléchargez les fichiers nécessaires au cours.</a></li>
             </ul>
         </div>
@@ -92,7 +90,8 @@ if (age < 18) {
     alert("Hello!");
 }</div>
             <h4>Boucles</h4>
-<div hljs no-escape>for (var i = 0; i < 100; i++) {
+            <div hljs no-escape>
+for (var i = 0; i < 100; i++) {
     console.log(i);
 }
 
@@ -102,13 +101,24 @@ while (j > 26) {
     alert("Haha !");
 }</div>
             <h4>Fonctions</h4>
-<div hljs no-escape>function ditBonjour(name) {
+            <div hljs no-escape>
+function ditBonjour(name) {
     alert("Bonjour " + name);
 }
 ditBonjour("tout le monde !");
 ditBonjour("toi");</div>
+            <h5>Fonctions en paramètres et fonctions anonymes</h5>
+            <div hljs no-escape>
+function sePresenter() {
+    alert("Je m'appelle JARVIS");
+}
+window.setTimeout(sePresenter, 2000);
+window.setTimeout(function () {
+    alert("Hello world!");
+}, 7000);</div>
             <h4>Listes/Tableaux</h4>
-<div hljs no-escape>var semaine = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"];
+            <div hljs no-escape>
+var semaine = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"];
 console.log(semaine[2]);
 console.log("Nombre de jours : " + semaine.length);
 semaine.push("Samedi");
@@ -126,7 +136,7 @@ console.log(semaine);</div>
                 <li>Pas de classe ;</li>
                 <li>Système clé => valeur ou fonction (méthode).</li>
             </ul>
-<div hljs no-escape>var aliment = {
+            <div hljs no-escape>var aliment = {
     nom: "Pizza",
     quantite: 23,
     appro: function (qty) {
@@ -141,11 +151,176 @@ console.log(aliment.nom);
 console.log(aliment.quantite);
 aliment.consommer();
 console.log(aliment.quantite);</div>
+            <br />
+            <h4>Combinons</h4>
+            <div hljs no-escape>
+[
+    {
+        nom: "Basile",
+        age: 21
+    },
+    {
+        nom: "Guillaume",
+        age: 20,
+        copine: {
+            nom: "Juliette"
+            age: 21
+        }
+    }
+]</div>
+            <br />
+            <h4>Résumé</h4>
+            <ul>
+                <li>Exécuté par le navigateur <strong>en live</strong> ;</li>
+                <li>Variable avec <strong>var</strong> ;</li>
+                <li>Pas de classes, objets = dictionnaire ;</li>
+                <li>Console du navigateur.</li>
+            </ul>
         </div>
     </div>
 
     <h1>2. Les bases d'AngularJS</h1>
+    <div class="panel panel-default" id="ng-intro">
+        <div class="panel-heading">
+            <h3 class="panel-title">a. Présentation</h3>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <li><strong>Framework</strong> Javascript développé par Google ;</li>
+                <li>≠ fonctions simplificatrices (comme jQuery). <strong>Changement radical de philosophie</strong>.</li>
+            </ul>
+
+            <h4><u>Avant</u> AngularJS</h4>
+            <div class="text-center">
+                <img src="images/avant-angularjs.svg" style="width: 80%;" />
+            </div>
+            <br />
+            Google vous envoie le fichier suivant :
+            <div hljs no-escape>
+&lt;table&gt;
+    &lt;tr&gt;&lt;td&gt;Basile&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Guillaume&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Camille&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Théophane&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</div>
+
+            <h4><u>Avec</u> AngularJS</h4>
+            <div class="text-center">
+                <img src="images/avec-angularjs.svg" style="width: 80%;" />
+            </div>
+            <br /><br /><br />
+            <p class="lead text-center">
+                <strong>AngularJS</strong> s'occupe de générer les pages, à partir des templates qu'il a récupérés et des données qu'il a demandées.
+            </p>
+        </div>
+    </div>
+    <div class="panel panel-default" id="ng-controllerview">
+        <div class="panel-heading">
+            <h3 class="panel-title">b. Controlleur/Vue</h3>
+        </div>
+        <div class="panel-body">
+            <h4>La vue</h4>
+            <ul>
+                <li>Template, code <strong>HTML</strong> (+ attributs AngularJS) affiché ;</li>
+                <li><strong>Aucune logique</strong> ;</li>
+                <li><code>partie-2/views/home.<strong>html</strong></code>.</li>
+            </ul>
+            <div hljs no-escape>Bonjour {{ nom }}.
+&lt;table&gt;
+    &lt;tr ng-repeat=&quot;membre in membres&quot;&gt;
+        &lt;td&gt;{{ membre }}&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</div>
+            <br /><br />
+
+            <h4>Le controlleur</h4>
+            <ul>
+                <li><strong>Javascript</strong> ;</li>
+                <li>Communique avec la <strong>vue</strong> à travers l'objet <strong>$scope</strong> ;</li>
+                <li>Contient toute la <strong>logique</strong> ;</li>
+                <li><strong>Un controlleur par vue</strong> ;</li>
+                <li><code>partie-2/scripts/controllers.<strong>js</strong></code>.</li>
+            </ul>
+            <div hljs no-escape>
+.controller('HomeCtrl', function ($scope) {
+    $scope.nom = "Basile";
+    $scope.membres = ["Basile", "Guillaume", "Camille", "Théophane"];
+});</div>
+            <br /><br /><br />
+            <p class="lead text-center">
+                L'objet <strong>$scope</strong> permet au <strong>controlleur</strong> d'envoyer des données à la vue.
+            </p>
+        </div>
+    </div>
+    <div class="panel panel-default" id="ng-vues">
+        <div class="panel-heading">
+            <h3 class="panel-title">c. Vues</h3>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <li>Différence avec un fichier HTML classique : les <strong>expressions</strong> (<code ng-non-bindable>{{ nom }}</code>) et les <strong>directives</strong> (attributs ou balises) <strong>AngularJS : <code>ng-machin</code></strong> ;</li>
+                <li>Documentation ici : <a href="https://docs.angularjs.org/api/ng/directive" target="_blank">https://docs.angularjs.org/api/ng/directive</a>.</li>
+            </ul>
+
+            <h4>Expressions AngularJS</h4>
+            <pre ng-non-bindable>{{ nom }}
+{{ 3 + 4 }}
+{{ "Bonjour " + nom }}</pre>
+
+            <h4>Directives classiques</h4>
+            <ul>
+                <li><a href="https://docs.angularjs.org/api/ng/directive/ngRepeat" target="_blank">ng-repeat</a> : <code>&lt;tr ng-repeat="membre in membres"&gt;</code> ;</li>
+                <li><a href="https://docs.angularjs.org/api/ng/directive/ngShow" target="_blank">ng-show</a> : <code>&lt;span ng-show="isAdmin"&gt;</code> ;</li>
+                <li><a href="https://docs.angularjs.org/api/ng/directive/ngClick" target="_blank">ng-click</a> : <code>&lt;a ng-click="sauvegarde<strong>()</strong>"&gt;</code>.</li>
+            </ul>
+
+            <h4>Mise en application</h4>
+            <div class="text-center">
+                <img src="images/ex1.gif" />
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default" id="ng-forms">
+        <div class="panel-heading">
+            <h3 class="panel-title">d. Formulaires</h3>
+        </div>
+        <div class="panel-body">
+            Directive <a href="https://docs.angularjs.org/api/ng/directive/ngModel" target="_blank"><strong>ng-model</strong></a> : lie un champ à une variable de $scope.
+            <div hljs no-escape language="html">
+Ton nom : &lt;input type="text" ng-model="nom" /&gt;&lt;br /&gt;
+&lt;input type="number" ng-model="n1" /&gt; + &lt;input type="number" ng-model="n2" /&gt; = {{ n1 + n2 }}</div>
+
+            <h4>Mise en application</h4>
+            <div class="text-center">
+                <img src="images/ex2.gif" />
+            </div>
+
+            <p class="lead text-center">
+                Le controlleur et la vue peuvent modifier le <strong>scope</strong>. C'est le two-way data-binding. Les modifications sont répercutées en temps réel par AngularJS.
+            </p>
+        </div>
+    </div>
+
+
     <h1>3. Faire un site web complet avec AngularJS</h1>
+    <div class="panel panel-default" id="ngc-routing">
+        <div class="panel-heading">
+            <h3 class="panel-title">a. Routing</h3>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <li>Plusieurs pages. À chaque fois, un controlleur et une vue ;</li>
+                <li><code>$routeProvider</code> ;</li>
+                <li><code>partie-3/scripts/app.js</code> ;</li>
+                <li>Lien dans une vue : <code>&lt;a href="#/ma-page"&gt;Aller à ma page&lt;/a&gt;</code>.</li>
+            </ul>
+            <div hljs no-escape>
+.when('/ma-page', {
+    templateUrl: 'views/ma-vue.html',
+    controller: 'MaPageCtrl'
+})</div>
+        </div>
+    </div>
 
     <br /><br />
     <div class="panel panel-default" id="summary">
@@ -153,12 +328,19 @@ console.log(aliment.quantite);</div>
             <h3 class="panel-title">Pour résumer</h3>
         </div>
         <div class="panel-body">
-            HTML, CSS, Bootstrap, Google.<br /><br />
             <ul>
-                <li><a href="http://openclassrooms.com/courses/apprenez-a-creer-votre-site-web-avec-html5-et-css3" target="_blank">Tuto HTML/CSS</a> ;</li>
-                <li><a href="http://openclassrooms.com/courses/prenez-en-main-bootstrap" target="_blank">Tuto Bootstrap</a> ;</li>
-                <li><a href="http://getbootstrap.com/" target="_blank">Le site de Bootstrap</a> ;</li>
-                <li><a href="http://google.com" target="_blank">Un moteur de recherche</a>.</li>
+                <li>C'est maintenant le navigateur qui a les templates et qui fait le rendu des pages ;</li>
+                <li>Les serveurs n'envoient plus que des données ;</li>
+                <li>Chaque page a <strong>un controlleur et une vue</strong>, liés par le <strong>$scope</strong> qui fonctionne dans les deux sens (two-way data-binding) ;</li>
+                <li>Les modifications sont répercutées <strong>automatiquement</strong> par AngularJS ;</li>
+                <li>Il y a beaucoup de choses qu'on n'a pas dites :p.</li>
+            </ul>
+            <h4>Pour aller plus loin</h4>
+            <ul>
+                <li><a href="https://docs.angularjs.org/tutorial" target="_blank">Tuto officiel AngularJS</a> ;</li>
+                <li><a href="http://openclassrooms.com/courses/developpez-vos-applications-web-avec-angularjs" target="_blank">Tuto OpenClassrooms</a> ;</li>
+                <li><a href="https://docs.angularjs.org/guide" target="_blank">Guide des différents concepts</a> ;</li>
+                <li><a href="https://docs.angularjs.org/api" target="_blank">Référence</a>.</li>
             </ul>
         </div>
     </div>
